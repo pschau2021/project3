@@ -1,6 +1,12 @@
 Breast Cancer Wisconsin (Diagnostic) Data Set
 Source:
+Project URL:
 
+https://qsun21.github.io/project3/
+
+This database is also available through the heroku:
+
+https://qian-mario-mohamed-pamproject3.herokuapp.com/data
 Creators:
 
 1. Dr. William H. Wolberg, General Surgery Dept.
@@ -28,9 +34,7 @@ Separating plane described above was obtained using Multisurface Method-Tree (MS
 
 The actual linear program used to obtain the separating plane in the 3-dimensional space is that described in: [K. P. Bennett and O. L. Mangasarian: "Robust Linear Programming Discrimination of Two Linearly Inseparable Sets", Optimization Methods and Software 1, 1992, 23-34].
 
-This database is also available through the UW CS ftp server:
-ftp ftp.cs.wisc.edu
-cd math-prog/cpo-dataset/machine-learn/WDBC/
+
 
 
 Attribute Information:
