@@ -105,11 +105,13 @@ def data():
     
     final_list = []
     for i in range(0, len(collections_list)):
-        el_dict = dict(element)
+        el_dict = dict(collections_list[i])
         el_dict['predicted_label'] = pred_labels[i]
         final_list.append(el_dict)
 
-    return json_util.dumps(final_list)
+    resp = Response(json_util.dumps(final_list))
+    resp.headers['Access-Control-Allow-Origin'] = '*'
+    return resp
 
 if __name__ == '__main__':
    app.run(host="0.0.0.0")

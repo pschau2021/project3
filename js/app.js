@@ -4,24 +4,29 @@ function optionChanged(option) {
         clearChart('histogramB');
         return;
     }
-    createChart(option, data, 'M', 'dna_reading_means', 'histogram', 'histogram');
-    createChart(option, data, 'B', 'dna_reading_means', 'scatter', 'scatter');
-    updateMetadata(option, data);
+    createChart(option, 'M', data, option, 'histogramM', 'histogram');
+    createChart(option, 'B', data, option, 'histogramB', 'histogram');
   }
 
-  d3.json("https://nwu-qianmariomahomedpam-proj2.herokuapp.com/data").then(function(fileData) {
+  d3.json("https://qian-mario-mohamed-pamproject3.herokuapp.com/data").then(function(fileData) {
   data = fileData;
   var dropdownMenu = d3.select("#selDataset");
   defaultOption = dropdownMenu.append("option");
   defaultOption.property('selected', 'selected');
-  defaultOption.property('value', 'Station Name');
-  defaultOption.text("Station Name");
-  dataSet = new Set(fileData.stationNames);
+  defaultOption.property('value', 'Select column');
+  defaultOption.text("Select column");
+  acc = calculateAccuracy(data);
+  console.log(acc);
+  displayAccuracy(acc);
+  dataSet = Object.keys(fileData[0])
   console.log(dataSet);
-  dataSet.forEach(element => {
-    var option = dropdownMenu.append("option");
-    option.property('value', element);
-    option.text(element);
+  exclude_list = ['_id', 'id', 'diagnosis', '', 'is_training']
+  dataSet.forEach(key => {
+    if(!exclude_list.includes(key)) {
+        var option = dropdownMenu.append("option");
+        option.property('value', key);
+        option.text(key);
+    }
   }); 
 });
 
@@ -30,25 +35,53 @@ function clearChart(tagName) {
     chart.style("display", "none");
   }
 
-function createChart(option, data, xName, yName, tagName, type) {
-    yPoints = [];
-    xPoints = [];
+function calculateAccuracy(data) {
+    var sum = 0;
+    var right = 0;
+    data.forEach(element => {
+        if(element['diagnosis'] == element['predicted_label']) {
+            right += 1;
+        }
+        sum += 1;
+    });
+    return(right/sum);
+}
+
+function displayAccuracy(acc) {
+    var dat = [{
+        values: [acc, 1-acc],
+        labels: ['CORRECT', 'INCORRECT'],
+        type: 'pie'
+    }];
+    var layout = {
+        width: 500,
+        height: 500,
+        title: "Accuracy"
+    };
+      
+    Plotly.plot('accuracy', dat, layout);
+}
+
+function createChart(option, label, data, yName, tagName, type) {
+    points = [];
     chart = d3.select(`#${tagName}`);
     chart.style("display", "inline");
 
-    for(var i = 0; i < data.stationNames.length; i++) { 
-        if(data.stationNames[i] == option) {
-            yPoints.push(data[yName][i]);
-            xPoints.push(data[xName][i]);
+    console.log(data)
+
+    for(var i = 0; i < data.length; i++) { 
+        if(data[i][option] && String(data[i]['diagnosis']).toLocaleLowerCase() == label.toLocaleLowerCase()) {
+            points.push(data[i][option]);
         }
-    }    
+    }   
+    
+    console.log(points)
 
     var trace1 = {
-        x: xPoints,
-        y: yPoints,
+        x: points,
         mode: 'markers',
         type: type,
-        name: `DNA Bacterial level VS ${xName}`,
+        name: `${option} histogram`,
         text: option,
         textposition: 'center',
         textfont: {
@@ -59,21 +92,19 @@ function createChart(option, data, xName, yName, tagName, type) {
 
     var layout = {
         xaxis: {
-            title: `${xName}`,
+            title: `${option} value`,
             autotick: true,
             showline: true,
             ticks: 'outside',
-            dtick: 0.25,
             ticklen: 6,
             tickwidth: 1,
             tickcolor: '#001'
         },
         yaxis: {
-            title: 'DNA Bacterial level' ,
+            title: `Number of occurrences of ${label}` ,
             autotick: true,
             showline: true,
             ticks: 'outside',
-            tick0: 0,
             dtick: 0.25,
             ticklen: 6,
             tickwidth: 2,
