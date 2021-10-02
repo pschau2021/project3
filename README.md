@@ -47,6 +47,10 @@ A Count Plot showing the number of Malignant and Benign tumors
 
 A series of Distribution Plots for the 10 key features.
 
+A Box Plot 
+
+A Correlation Heatmap
+
 ## Splitting the dataset:
 
 To assess the performance of the model’s, we divided the dataset into two parts: a training set and a test set. The first is used to train the system, while the second is used to evaluate the learned or trained system. 
