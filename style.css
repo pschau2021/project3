@@ -5,9 +5,11 @@ table, th, td {
     height: 100px;
     width: 500px;
     background-color: lightblue;
+    text-align: center
   }
   
   td {
     color: navy;
     margin-left: 100px;
+    text-align: center
   }
