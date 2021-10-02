@@ -12,17 +12,11 @@ The goal of this analysis was to train machine learning algorithms to accurately
 
 We used Numpy, Pandas, Matplotlib and Seaborn libraries to manipulate the data and build the ML model.
 
-![Imports](ReadMe Images/import.png)
-
 ## Loading the Data:
 
 The measurements and data we used came from the Breast Cancer Wisconsin (Diagnostic) Data Set obtained from the [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+(Diagnostic)). There are a total of 569 data samples and 30 features associated with them. Out of which 212 are malignant samples and 357 are benign.
 
-![Data](ReadMe Images/bcdata.png)bcdata.png
-
-
 There are 10 main features in the dataset, and for each (the mean, error, or standard error and worst or largest) for all these features were calculated thus giving us a total of 30 features to work with.
-
 
 Ten real-valued features which are calculated for each cell nucleus:
 1.	radius (computed as mean distances from center to points on perimeter)
@@ -46,27 +40,19 @@ The image below shows the format of this data. The first column contains the pat
 
 The next step preformed was the removal of missing values or unnecessary data. The removal of the column containing the patient ID, was not important for our purpose and was therefore removed from the dataset as shown below.
 
-![CleanData](ReadMe Images/cleandata.png)
-
 ## Creating Visualizations:
 
-After the cleaning of the data, we created several visualizations. Here are just a few examples:
+After the cleaning of the data, we created several visualizations.
 
 A Count Plot showing the number of Malignant and Benign tumors
 
-![CountPlot](ReadMe Images/countplot.png)
-
 A series of Distribution Plots for the 10 key features.
-
-![DistributionPlot](ReadMe Images/distributionplot.png)
 
 ## Splitting the dataset:
 
 To assess the performance of the model’s, we divided the dataset into two parts: a training set and a test set. The first is used to train the system, while the second is used to evaluate the learned or trained system. 
 
 We used the sklearn.model_selection.train_test_split to split the dataset.
-
-![TrainTestData](ReadMe Images/traintest.png)
 
 * We fixed the seed to 42 for the random number generator, in order to get reproducible results.
 
