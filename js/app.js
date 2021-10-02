@@ -56,7 +56,7 @@ function displayAccuracy(acc) {
     var layout = {
         width: 500,
         height: 500,
-        title: "Accuracy"
+        title: "SVM Accuracy report"
     };
       
     Plotly.plot('accuracy', dat, layout);
