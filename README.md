@@ -41,15 +41,15 @@ The next step preformed was the removal of missing values or unnecessary data. T
 
 ## Creating Visualizations:
 
-After the cleaning of the data, we created several visualizations.
+After the cleaning of the data, we created several visualizations:
 
-A Count Plot showing the number of Malignant and Benign tumors
+* Count Plot showing the number of Malignant and Benign tumors.
 
-A series of Distribution Plots for the 10 key features.
+* Distribution Plots for the 10 key features.
 
-A Box Plot 
+* Box Plot 
 
-A Correlation Heatmap
+* Correlation Heatmap
 
 ## Splitting the dataset:
 
