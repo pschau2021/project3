@@ -34,7 +34,6 @@ Ten real-valued features which are calculated for each cell nucleus:
 
 The image below shows the format of this data. The first column contains the patients' ID’s, which are used instead of names to protect confidentiality. The second column contains either an M or B. The M stands for malignant, which is the term used to describe a cancerous tumor able to quickly spread onto other tissues and B stands for benign, which is a tumor that has not yet become cancerous and has a much higher patient survival rate. The rest of the columns contain qualitative and quantitative data samples.
 
-![MainData](ReadMe Images/maindata.png)
 
 ## Cleaning the Data:
 
