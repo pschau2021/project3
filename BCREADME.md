@@ -16,7 +16,7 @@ We used Numpy, Pandas, Matplotlib and Seaborn libraries to manipulate the data a
 
 ## Loading the Data:
 
-The measurements and data we used came from the Breast Cancer Wisconsin (Diagnostic) Data Set obtained from the [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+(Diagnostic))]. There are a total of 569 data samples and 30 features associated with them. Out of which 212 are malignant samples and 357 are benign.
+The measurements and data we used came from the Breast Cancer Wisconsin (Diagnostic) Data Set obtained from the [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+(Diagnostic)). There are a total of 569 data samples and 30 features associated with them. Out of which 212 are malignant samples and 357 are benign.
 
 ![Data](ReadMe Images/bcdata.png)bcdata.png
 
